@@ -1,9 +1,9 @@
 LOCAL_PATH := $(call my-dir)
 
-# Use prebuilt kernel
+# Use compiled kernel, uses custom dtb
 INTERNAL_BOOTIMAGE_ARGS := \
 	$(addprefix --second ,$(INSTALLED_2NDBOOTLOADER_TARGET)) \
-	--kernel $(TARGET_PREBUILT_KERNEL)
+	--kernel $(INSTALLED_KERNEL_TARGET)
 
 ifneq ($(BOARD_BUILD_SYSTEM_ROOT_IMAGE),true)
 INTERNAL_BOOTIMAGE_ARGS += --ramdisk $(INSTALLED_RAMDISK_TARGET)
@@ -13,7 +13,7 @@ INTERNAL_BOOTIMAGE_FILES := $(filter-out --%,$(INTERNAL_BOOTIMAGE_ARGS))
 
 INTERNAL_RECOVERYIMAGE_ARGS := \
 	$(addprefix --second ,$(INSTALLED_2NDBOOTLOADER_TARGET)) \
-	--kernel $(TARGET_PREBUILT_KERNEL) \
+	--kernel $(INSTALLED_KERNEL_TARGET) \
 	--ramdisk $(recovery_ramdisk)
 
 BOARD_KERNEL_CMDLINE := $(strip $(BOARD_KERNEL_CMDLINE))
