@@ -191,4 +191,4 @@ ro.config.zram=true
 ro.config.swap=true
 
 # LineageOS Custom OTA Server
-cm.updater.uri=http://10.239.0.139:8080/loupOtaApi
+cm.updater.uri=https://loup-ota-server.appspot.com/loupOtaApi
