@@ -177,7 +177,7 @@ on boot
 
     # Fingerprint
     setprop persist.sys.fp.vendor none
-    start gx_fpd
+    #start gx_fpd
     
     #weidong,add the fp sensor infomation,20161122,start
     on property:persist.sys.fp.vendor=switchf
@@ -1065,7 +1065,7 @@ service fingerprint_log /system/bin/fingerprint_log
     disabled
 
 on property:persist.sys.fp.vendor=switchf
-    stop gx_fpd
+    #stop gx_fpd
     setprop persist.sys.fp.vendor searchf
     start fingerprintd
 
