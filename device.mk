@@ -217,10 +217,6 @@ PRODUCT_PACKAGES += \
     libOmxVenc \
     libstagefrighthw
 
-# OpenDelta
-PRODUCT_PACKAGES += \
-    OpenDelta
-
 # Power
 PRODUCT_PACKAGES += \
     power.msm8937

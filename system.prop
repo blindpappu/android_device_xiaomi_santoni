@@ -189,6 +189,3 @@ ro.config.zram=true
 
 # Create Swap disk, if below sys-prop enabled & also if device has lower (< 1 GB) RAM
 ro.config.swap=true
-
-# LineageOS Custom OTA Server
-cm.updater.uri=https://loup-ota-server.appspot.com/loupOtaApi
