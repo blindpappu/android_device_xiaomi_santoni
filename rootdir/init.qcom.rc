@@ -1012,11 +1012,13 @@ on property:sys.dbg.coresight.enable=1
 on property:sys.dbg.coresight.enable=0
     write /persist/coresight/enable 0
 
+# libandroid_runtime.so is missing
 service qseeproxydaemon /system/vendor/bin/qseeproxydaemon
     class late_start
     user system
     group system
     writepid /dev/cpuset/system-background/tasks
+    disabled
 
 service esepmdaemon /system/vendor/bin/esepmdaemon
     class core
