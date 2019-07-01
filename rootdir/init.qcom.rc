@@ -206,6 +206,13 @@ on boot
     chown system system /sys/class/leds/red/brightness
     chown system system /sys/class/leds/green/brightness
     chown system system /sys/class/leds/blue/brightness
+	
+	chmod 0660 /sys/class/leds/red/blink
+    chmod 0660 /sys/class/leds/green/blink
+    chmod 0660 /sys/class/leds/blue/blink
+    chmod 0660 /sys/class/leds/red/brightness
+    chmod 0660 /sys/class/leds/green/brightness
+    chmod 0660 /sys/class/leds/blue/brightness
 
     # Allow access to emmc rawdump block partition and dload sysfs node
     chown root system /dev/block/bootdevice/by-name/rawdump -p /dev/block/
@@ -785,13 +792,13 @@ service cnss_diag /system/bin/cnss_diag -q
     group system wifi inet net_admin sdcard_rw media_rw diag
     oneshot
 
-service cnss-daemon /system/bin/cnss-daemon -n -l
-    class late_start
-    user system
-    group system inet net_admin wifi
+#service cnss-daemon /system/bin/cnss-daemon -n -l
+#    class late_start
+#    user system
+#    group system inet net_admin wifi
 
-on property:sys.shutdown.requested=*
-    stop cnss-daemon
+#on property:sys.shutdown.requested=*
+#    stop cnss-daemon
 
 service loc_launcher /system/bin/loc_launcher
     #loc_launcher will start as root and set its uid to gps
