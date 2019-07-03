@@ -206,6 +206,7 @@ on boot
     chown system system /sys/class/leds/red/brightness
     chown system system /sys/class/leds/green/brightness
     chown system system /sys/class/leds/blue/brightness
+    chown system system /sys/class/leds/white/brightness
 	
 	chmod 0660 /sys/class/leds/red/blink
     chmod 0660 /sys/class/leds/green/blink
@@ -213,6 +214,7 @@ on boot
     chmod 0660 /sys/class/leds/red/brightness
     chmod 0660 /sys/class/leds/green/brightness
     chmod 0660 /sys/class/leds/blue/brightness
+    chmod 0660 /sys/class/leds/white/brightness
 
     # Allow access to emmc rawdump block partition and dload sysfs node
     chown root system /dev/block/bootdevice/by-name/rawdump -p /dev/block/
@@ -459,8 +461,10 @@ on property:sys.boot_completed=1
     write /sys/block/dm-1/queue/read_ahead_kb 512
     #WDSP FW boot sysfs node used by STHAL
     chown media audio /sys/kernel/wdsp0/boot
-	# wlan/bt init
-	start init_wlan_bt
+    # set chmod for vibrator
+    chmod 0660 /sys/class/timed_output/vibrator/enable
+    # wlan/bt init
+    start init_wlan_bt
 	
 service init_wlan_bt /system/bin/sh /system/etc/init_hcismd_up.sh
     class main
