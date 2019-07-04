@@ -637,15 +637,17 @@ service qmuxd /system/bin/qmuxd
     user root
     group radio audio bluetooth gps nfc qcom_diag
 
-service hciattach /system/bin/sh /system/etc/init.qcom.bt.sh
-    class late_start
-    user bluetooth
-    group bluetooth net_bt_admin
-    disabled
-    oneshot
+# we don't want to double initialize the bt driver
+#service hciattach /system/bin/sh /system/etc/init.qcom.bt.sh
+#    class late_start
+#    user bluetooth
+#    group bluetooth net_bt_admin
+#    disabled
+#    oneshot
 
 on property:bluetooth.hciattach=true
-    start hciattach
+    #start hciattach
+    setprop bluetooth.status on
 
 on property:bluetooth.hciattach=false
     setprop bluetooth.status off
