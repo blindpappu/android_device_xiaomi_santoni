@@ -283,9 +283,13 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/WCNSS_cfg.dat:system/etc/firmware/wlan/prima/WCNSS_cfg.dat \
     $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini
 
-######################
-# Ubuntu Touch Files #
-######################
+################
+# Ubuntu Touch #
+################
+
+# Aethercast
+PRODUCT_PROPERTY_OVERRIDES += \
+    ubuntu.widi.supported=1
 
 PRODUCT_PACKAGES += \
     libubuntu_application_api \
